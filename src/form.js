@@ -8,7 +8,21 @@ import {complaint} from './server';
 const lengthOf = lengthOfFive(5);
 
 export class ComplaintForm extends React.Component {
+    
   render() {
+
+    let returnedMessage = '';
+
+    if (this.props.submitSucceeded) {
+      returnedMessage = <div className="message message-success">Report submitted successfully</div>
+    } else if (this.props.submitFailed) {
+      returnedMessage = <div className="message message-error">Delivery not found</div>
+    } else {
+      returnedMessage = '';
+    }
+
+
+
     return (
       <form 
       onSubmit={this.props.handleSubmit(values => {
@@ -18,6 +32,8 @@ export class ComplaintForm extends React.Component {
       <div className="formContainer">
         <h2>Report a problem with your delivery</h2>
 
+        <div className="successToggle">{returnedMessage}</div>
+        
         <label htmlFor="tracking">Tracking number</label>
         <Field 
           component={Input}
