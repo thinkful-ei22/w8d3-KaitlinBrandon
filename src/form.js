@@ -1,6 +1,8 @@
 import React from 'react';
 import './form.css';
-import {reduxForm, Field} from 'redux-form';
+import {reduxForm, Field } from 'redux-form';
+import { required, notEmpty, lengthOfFive, isNumber } from './validators';
+import Input from './input'
 
 export class ComplaintForm extends React.Component {
   render() {
@@ -13,7 +15,13 @@ export class ComplaintForm extends React.Component {
         <h2>Report a problem with your delivery</h2>
 
         <label htmlFor="tracking">Tracking number</label>
-        <Field component="input" type="text" name="tracking" id="Tracking" />
+        <Field 
+          component={Input}
+          element="input" 
+          type="text" 
+          name="tracking" 
+          id="Tracking" 
+          validate={[required, notEmpty, lengthOfFive, isNumber]} />
 
         <label htmlFor="issue">What is your issue?</label>
         <Field component="select" name="input" id="Input">

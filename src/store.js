@@ -5,9 +5,9 @@ import {reducer as formReducer} from 'redux-form';
 const mainReducer = (s = null) => s;
 
 export default createStore (
-combineReducers({
-    main: mainReducer,
-    form: formReducer
-}),
-applyMiddleware(thunk)
+    combineReducers({
+        main: mainReducer,
+        form: formReducer
+    }),
+    applyMiddleware(thunk)
 );
