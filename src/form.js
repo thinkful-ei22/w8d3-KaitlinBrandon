@@ -5,7 +5,10 @@ import {reduxForm, Field} from 'redux-form';
 export class ComplaintForm extends React.Component {
   render() {
     return (
-      <form>
+      <form 
+      onSubmit={this.props.handleSubmit(values => 
+        console.log(values)
+      )}>
       <div className="formContainer">
         <h2>Report a problem with your delivery</h2>
 
