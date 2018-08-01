@@ -11,8 +11,10 @@ export class ComplaintForm extends React.Component {
   render() {
     return (
       <form 
-      onSubmit={values => this.props.handleSubmit(complaint(values))
-      }>
+      onSubmit={this.props.handleSubmit(values => {
+        console.log('values', values)
+        return complaint(values)
+      })}>
       <div className="formContainer">
         <h2>Report a problem with your delivery</h2>
 
@@ -21,10 +23,10 @@ export class ComplaintForm extends React.Component {
           component={Input}
           element="input" 
           type="text" 
-          name="tracking" 
-          id="Tracking" 
-          //validate={[required, notEmpty, lengthOf, isNumber]} />
-/>
+          name="trackingNumber" 
+          id="trackingNumber" 
+          validate={[required, notEmpty, lengthOf, isNumber]} />
+
         <label htmlFor="issue">What is your issue?</label>
         <Field 
         component={Input}
@@ -35,6 +37,7 @@ export class ComplaintForm extends React.Component {
           <option value="missing-part">Part of my order was missing</option>
           <option value="damaged">Some of my order arrived damanged</option>
           <option value="other">Other (give details below)</option>
+
         </Field>
 
         <label htmlFor="details">Give more details (optional)</label>
@@ -50,5 +53,6 @@ export class ComplaintForm extends React.Component {
 }
 
 export default reduxForm({
-  form: 'Complaint'
+  form: 'Complaint',
+  initialValues: {issue: 'not-delivered'}
 })(ComplaintForm);

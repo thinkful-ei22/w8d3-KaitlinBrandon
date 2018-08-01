@@ -1,7 +1,8 @@
 import {SubmissionError} from 'redux-form';
 
 
-export const complaint = values => dispatch => {
+export const complaint = values => {
+    
     return fetch ('https://us-central1-delivery-form-api.cloudfunctions.net/api/report', {
         method: 'POST',
         body: JSON.stringify(values),
