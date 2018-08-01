@@ -5,6 +5,8 @@ import { required, notEmpty, lengthOfFive, isNumber } from './validators';
 import Input from './input'
 import {complaint} from './server';
 
+const lengthOf = lengthOfFive(5);
+
 export class ComplaintForm extends React.Component {
   render() {
     return (
@@ -21,8 +23,8 @@ export class ComplaintForm extends React.Component {
           type="text" 
           name="tracking" 
           id="Tracking" 
-          validate={[required, notEmpty, lengthOfFive, isNumber]} />
-
+          //validate={[required, notEmpty, lengthOf, isNumber]} />
+/>
         <label htmlFor="issue">What is your issue?</label>
         <Field 
         component={Input}
